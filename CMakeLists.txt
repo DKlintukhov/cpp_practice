@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
-set(PROJECT_NAME CppPractice)
-set(TESTS Tests)
+set(PROJECT_NAME cpp_practice)
+set(TESTS tests)
 project(${PROJECT_NAME} VERSION "0.0.1")
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -22,7 +22,7 @@ file(GLOB HEADERS include/*.h)
 file(GLOB SRC src/*.cpp)
 
 add_executable(${PROJECT_NAME} main.cpp ${HEADERS} ${SRC})
-add_executable(${TESTS} TestConfig.cpp)
+add_executable(${TESTS} test_config.cpp)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
@@ -51,4 +51,5 @@ set(CPACK_PACKAGE_CONTACT denis.klintukhov@gmail.com)
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 include(CPack)
 enable_testing()
-add_test(${TESTS} config_test)
+add_test(${TESTS} test_config)
+
