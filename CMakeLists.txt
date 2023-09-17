@@ -6,7 +6,13 @@ enable_testing()
 
 add_executable(cpp_practice main.cpp)
 
-target_compile_options(cpp_practice PRIVATE -Werror -Wall -Wextra -Wpedantic)
+if(LINUX OR APPLE)
+    target_compile_options(cpp_practice PRIVATE -Werror -Wall -Wextra -Wpedantic)
+endif(LINUX OR APPLE)
+
+if(WIN32)
+    target_compile_options(cpp_practice PRIVATE /WX)
+endif(WIN32)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
