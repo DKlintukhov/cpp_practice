@@ -6,13 +6,15 @@ enable_testing()
 
 add_executable(cpp_practice main.cpp)
 
-if(LINUX OR APPLE)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    # using Clang
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_compile_options(cpp_practice PRIVATE -Werror -Wall -Wextra -Wpedantic)
-endif(LINUX OR APPLE)
-
-if(WIN32)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+    # using Intel C++
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     target_compile_options(cpp_practice PRIVATE /WX)
-endif(WIN32)
+endif()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
