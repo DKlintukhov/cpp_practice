@@ -16,6 +16,8 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     target_compile_options(cpp_practice PRIVATE /WX)
 endif()
 
+set_target_properties(cpp_practice PROPERTIES CXX_STANDARD 20)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED 20)
